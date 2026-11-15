@@ -9,7 +9,7 @@ import Signup from "./components/Signup";
 function App() {
   return (
     <div className="px-10 bg-white border rounded-md">
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
