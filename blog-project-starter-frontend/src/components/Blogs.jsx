@@ -11,7 +11,7 @@ function Blogs() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        axios.get("http://localhost:5000/api/blogs").then((res) => {
+        axios.get("https://blog-portfolio-project-w14.onrender.com/api/blogs").then((res) => {
             setBlogs(res.data)
         }).catch(() => {
             console.error("Error fetching blogs")
@@ -30,10 +30,10 @@ function Blogs() {
 
     const handleLike = async (blog_id) => {
         try {
-            const response = await axios.patch(`http://localhost:5000/api/blogs/like/${blog_id}`);
+            const response = await axios.patch(`https://blog-portfolio-project-w14.onrender.com/api/blogs/like/${blog_id}`);
             // After successfully updating the likes count in the backend, fetch the updated list of blogs
             if (response.status === 200) {
-                axios.get("http://localhost:5000/api/blogs").then((res) => {
+                axios.get("https://blog-portfolio-project-w14.onrender.com/api/blogs").then((res) => {
                     console.log(res.data)
                     setBlogs(res.data)
                 }).catch(() => {
@@ -60,12 +60,12 @@ function Blogs() {
         try {
             const idToken = await user.getIdToken();
             await axios.post(
-                "http://localhost:5000/api/blogs",
+                "https://blog-portfolio-project-w14.onrender.com/api/blogs",
                 { newTitle, date, newContent, likes: 0 },
                 { headers: { Authorization: `Bearer ${idToken}` } }
             );
 
-            const response = await axios.get("http://localhost:5000/api/blogs");
+            const response = await axios.get("https://blog-portfolio-project-w14.onrender.com/api/blogs");
             setBlogs(response.data);
             setNewTitle('');
             setNewContent('');
